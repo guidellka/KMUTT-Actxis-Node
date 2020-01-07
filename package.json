@@ -1,0 +1,31 @@
+{
+  "name": "express-rest-api",
+  "version": "1.0.0",
+  "description": "Template for express Restful API",
+  "author": "Puripat Arayasirikul <boat46450@hotmail.com>",
+  "main": "index.js",
+  "license": "ISC",
+  "scripts": {
+    "start": "nodemon index.js",
+    "rollback": "knex --knexfile database/knexfile.js migrate:rollback",
+    "migrate": "knex --knexfile database/knexfile.js migrate:latest",
+    "seed": "knex --knexfile database/knexfile.js seed:run"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "express-http-proxy": "^1.6.0",
+    "express-session": "^1.15.6",
+    "faker": "^4.1.0",
+    "fs": "^0.0.1-security",
+    "https": "^1.0.0",
+    "jwt-simple": "^0.5.6",
+    "knex": "^0.14.6",
+    "mysql": "^2.15.0",
+    "passport": "^0.4.0",
+    "passport-ldapauth": "^2.1.3"
+  }
+}
