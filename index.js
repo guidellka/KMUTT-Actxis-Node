@@ -31,16 +31,10 @@ app.use(
 
 // Set route
 app.use('/api/v1', appRouters)
-app.use('/users/:id', proxy('localhost:8000', {
-    proxyReqPathResolver: function (req, res) {
-        const id = req.params.id
-        return `/api/users/${id}`
-    }
-}))
-app.use('/user/:username', proxy('localhost:8000', {
+app.use('/users/:username', proxy('localhost:8000', {
     proxyReqPathResolver: function (req, res) {
         const username = req.params.username
-        return `/api/userByUsername/${username}`
+        return `/api/user/${username}`
     }
 }))
 app.use('/users', proxy('localhost:8000', {
@@ -52,6 +46,12 @@ app.use('/user_data/:user_id', proxy('localhost:8000', {
     proxyReqPathResolver: function (req, res) {
         const user_id = req.params.user_id
         return `/api/user_data/${user_id}`
+    }
+}))
+app.use('/organization_name/:user_id', proxy('localhost:8000', {
+    proxyReqPathResolver: function (req, res) {
+        const user_id = req.params.user_id
+        return `/api/organ_user/${user_id}`
     }
 }))
 
