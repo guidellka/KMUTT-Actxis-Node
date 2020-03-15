@@ -31,10 +31,86 @@ app.use(
 
 // Set route
 app.use('/api/v1', appRouters)
-app.use('/users/:username', proxy('localhost:8000', {
+//------------------ Router get by another ------------------
+app.use('/user/:username', proxy('localhost:8000', {
     proxyReqPathResolver: function (req, res) {
         const username = req.params.username
         return `/api/user/${username}`
+    }
+}))
+app.use('/document/student/:owner_id', proxy('localhost:8000', {
+    proxyReqPathResolver: function (req, res) {
+        const owner_id = req.params.owner_id
+        return `/api/documentByOwnerId/${owner_id}`
+    }
+}))
+app.use('/organization_name/:user_id', proxy('localhost:8000', {
+    proxyReqPathResolver: function (req, res) {
+        const user_id = req.params.user_id
+        return `/api/organ_user/${user_id}`
+    }
+}))
+app.use('/lecturer', proxy('localhost:8000', {
+    proxyReqPathResolver: function (req, res) {
+        return `/api/getLecturer`
+    }
+}))
+//------------------ Router get by id ------------------
+app.use('/user_data/:user_id', proxy('localhost:8000', {
+    proxyReqPathResolver: function (req, res) {
+        const user_id = req.params.user_id
+        return `/api/user_data/${user_id}`
+    }
+}))
+//------------------ Router get all ------------------
+app.use('/users', proxy('localhost:8000', {
+    proxyReqPathResolver: function (req, res) {
+        return '/api/users'
+    }
+}))
+app.use('/user_data', proxy('localhost:8000', {
+    proxyReqPathResolver: function (req, res) {
+        return `/api/user_data`
+    }
+}))
+app.use('/organizations', proxy('localhost:8000', {
+    proxyReqPathResolver: function (req, res) {
+        return `/api/organizations`
+    }
+}))
+app.use('/notifications', proxy('localhost:8000', {
+    proxyReqPathResolver: function (req, res) {
+        return `/api/notifications`
+    }
+}))
+app.use('/organization_users', proxy('localhost:8000', {
+    proxyReqPathResolver: function (req, res) {
+        return `/api/organization_users`
+    }
+}))
+app.use('/photos', proxy('localhost:8000', {
+    proxyReqPathResolver: function (req, res) {
+        return `/api/photos`
+    }
+}))
+app.use('/steps', proxy('localhost:8000', {
+    proxyReqPathResolver: function (req, res) {
+        return `/api/steps`
+    }
+}))
+app.use('/document_steps', proxy('localhost:8000', {
+    proxyReqPathResolver: function (req, res) {
+        return `/api/document_steps`
+    }
+}))
+app.use('/attach_files', proxy('localhost:8000', {
+    proxyReqPathResolver: function (req, res) {
+        return `/api/attach_files`
+    }
+}))
+app.use('/category_steps', proxy('localhost:8000', {
+    proxyReqPathResolver: function (req, res) {
+        return `/api/category_steps`
     }
 }))
 app.use('/users', proxy('localhost:8000', {
@@ -42,16 +118,29 @@ app.use('/users', proxy('localhost:8000', {
         return '/api/users'
     }
 }))
-app.use('/user_data/:user_id', proxy('localhost:8000', {
+app.use('/documents', proxy('localhost:8000', {
     proxyReqPathResolver: function (req, res) {
-        const user_id = req.params.user_id
-        return `/api/user_data/${user_id}`
+        return `/api/documents`
     }
 }))
-app.use('/organization_name/:user_id', proxy('localhost:8000', {
+app.use('/document_categories', proxy('localhost:8000', {
     proxyReqPathResolver: function (req, res) {
-        const user_id = req.params.user_id
-        return `/api/organ_user/${user_id}`
+        return `/api/document_categories`
+    }
+}))
+app.use('/comments', proxy('localhost:8000', {
+    proxyReqPathResolver: function (req, res) {
+        return `/api/comments`
+    }
+}))
+app.use('/clubs', proxy('localhost:8000', {
+    proxyReqPathResolver: function (req, res) {
+        return `/api/clubs`
+    }
+}))
+app.use('/budgets', proxy('localhost:8000', {
+    proxyReqPathResolver: function (req, res) {
+        return `/api/budgets`
     }
 }))
 
